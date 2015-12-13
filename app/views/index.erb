@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rock Paper Scissors</title>
+  </head>
+
+  <body>
+
+    <h1>MMORPPS </h1>
+      <table>
+        <thead>
+            <tr>
+              <th> Player </th>
+              <th> Score </th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> Human: </td>
+            <td><%= session[:player_points] %></td>
+          </tr>
+          <tr>
+            <td> Computer: </td>
+            <td><%= session[:computer_points] %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%if @winner == "Human" %>
+        <h2> Death to the machines! <%= @winner %> win!</h2>
+        <form action="/game/results" method="post">
+          <input type="submit" value="Play again!">
+        </form>
+      <%elsif @winner == "Computer" %>
+        <h2> Oh no! You failed. <%= @winner %>s are taking over the world.</h2>
+        <form action="/game/results" method="post">
+        <input type="submit" value="Play again!">
+      <%else%>
+        <h2> Choose! </h2>
+        <form action="/game" method="post">
+          <input type="submit" name="choice" value="Rock">
+          <input type="submit" name="choice" value="Paper">
+          <input type="submit" name="choice" value="Scissors">
+        </form>
+    <% end %>
+  </body>
+</html>

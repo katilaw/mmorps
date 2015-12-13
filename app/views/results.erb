@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rock Paper Scissors</title>
+  </head>
+
+  <body>
+
+    <h1> MMORPPS </h1>
+      <%if @winner == "Player" %>
+        <h2> Death to the machines! <%= @winner %> win!</h2>
+      <%else %>
+        <h2> Oh no! You failed. <%= @winner %>s are taking over the world.</h2>
+      <% end %>
+      <form action="/game/results" method="post">
+        <input type="submit" value="Play again!">
+      </form>
+  </body>
+</html>
